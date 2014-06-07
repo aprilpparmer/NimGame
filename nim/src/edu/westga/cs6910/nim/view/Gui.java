@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -130,10 +131,13 @@ public class Gui {
 			//		 ComputerFirstListener as its action listener.
 			
 			this.radComputerPlayer = new JRadioButton("Computer first");
-			this.radHumanPlayer.addActionListener(new ComputerFirstListener());
+			this.radComputerPlayer.addActionListener(new ComputerFirstListener());
 			
 			// TODO: Create a ButtonGroup and add the 2 radio buttons to it.
 				
+			ButtonGroup buttons = new ButtonGroup();
+			buttons.add(radHumanPlayer);
+			buttons.add(radComputerPlayer);
 			
 			
 			// TODO: Add the 2 radio buttons to this panel.
