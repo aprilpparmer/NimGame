@@ -129,6 +129,8 @@ public class Gui {
 			// TODO: Instantiate this.btnComputerPlayer and add 
 			//		 ComputerFirstListener as its action listener.
 			
+			this.radComputerPlayer = new JRadioButton("Computer first");
+			this.radHumanPlayer.addActionListener(new ComputerFirstListener());
 			
 			// TODO: Create a ButtonGroup and add the 2 radio buttons to it.
 				
