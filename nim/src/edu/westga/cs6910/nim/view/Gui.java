@@ -79,6 +79,16 @@ public class Gui {
 		//		 3. Instantiate this.pnlComputerPlayer, add it to
 		//			the content pane at the right, and disable it.
 		
+		this.pnlHumanPlayer = new NewGamePanel(this.theGame);
+		this.contentPane.add(this.pnlHumanPlayer, BorderLayout.WEST);
+		this.pnlHumanPlayer.setEnabled(false);
+		
+		this.pnlGameInfo = new NewGamePanel(this.theGame);
+		this.contentPane.add(this.pnlGameInfo, BorderLayout.CENTER);
+		
+		this.pnlComputerPlayer = new NewGamePanel(this.theGame);
+		this.contentPane.add(this.pnlComputerPlayer, BorderLayout.EAST);
+		this.pnlComputerPlayer.setEnabled(false);
 		
 	}
 	
