@@ -88,7 +88,17 @@ public class ComputerPlayerPanel extends JPanel implements Observer {
 		//          sticks taken by the computer player.
 		//       2. Swap this panel's enabled status from enabled to disabled
 		//			or vice versa.
- 
+		int sticksTaken = 0;
+		while (!this.theGame.isGameOver()) {
+			sticksTaken += this.theComputer.getSticksOnThisTurn(); 			 
+		}
+		this.lblNumberTaken.setText("Number of sticks taken: " + sticksTaken);
+		
+		if (isEnabled()) {
+			setEnabled(false);
+		} else {
+			setEnabled(true);
+		}
 	}
 	
 	
