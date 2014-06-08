@@ -1,11 +1,15 @@
 package edu.westga.cs6910.nim.view;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -26,6 +30,8 @@ public class ComputerPlayerPanel extends JPanel implements Observer {
 	private static final long serialVersionUID = 140604L;
 	private JLabel lblNumberTaken;
 	private ComputerPlayer theComputer;
+	private JComboBox<Integer> cmbNumberToTake;
+	private JButton btnTakeSticks;
 
 	/**
 	 * Creates a new ComputerPlayerPanel that observes the specified game. 
@@ -107,8 +113,20 @@ public class ComputerPlayerPanel extends JPanel implements Observer {
 	
 	private void buildPanel() {
 		// TODO: Using the other panel classes as a model, build this panel.
+		this.setBorder(BorderFactory.createTitledBorder(this.theComputer.getName()));
 		
+		JLabel lblNumberToTake = new JLabel("Number of sticks to take:");
+		this.add(lblNumberToTake);
 		
+		Integer[] numbers = {1, 2, 3};
+		this.cmbNumberToTake = new JComboBox<Integer>(numbers);
+		this.cmbNumberToTake.setEditable(false);
+		
+		this.add(this.cmbNumberToTake, BorderLayout.SOUTH);
+		
+		this.btnTakeSticks = new JButton("Take sticks");
+		this.btnTakeSticks.addActionListener(new TakeTurnListener());
+		this.add(this.btnTakeSticks);
 	}
 	
 	
