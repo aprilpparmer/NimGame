@@ -89,7 +89,12 @@ public class Game extends Observable {
 		//		 3. Tell all observers that a significant change
 		//			occurred: set the changed flag and notify observers.
 		//          See http://tinyurl.com/javaObserverPattern
+		if (!isGameOver()) {
+			getCurrentPlayer().takeTurn();
+			
+		}
 		
+		this.swapWhoseTurn();
 		
 	}
 
@@ -171,7 +176,11 @@ public class Game extends Observable {
 	private void swapWhoseTurn() {
 		// TODO: Swap the players so that the other player becomes 
 		//       the current player and vice versa. 
-		
+		if (getCurrentPlayer() == this.theHuman) {
+			this.currentPlayer = this.theComputer;
+		} else {
+			this.currentPlayer = this.theHuman;
+		}
 		
 	}
 	
