@@ -47,7 +47,7 @@ public class ComputerPlayerPanel extends JPanel implements Observer {
 		// TODO: Add this object as an observer of this.theGame.
 		//       See http://tinyurl.com/javaObserverPattern
 		 
-		
+		this.theGame.addObserver(this);
 		this.theComputer = this.theGame.getComputerPlayer();
 		
 		this.buildPanel();
@@ -94,11 +94,9 @@ public class ComputerPlayerPanel extends JPanel implements Observer {
 		//          sticks taken by the computer player.
 		//       2. Swap this panel's enabled status from enabled to disabled
 		//			or vice versa.
-		int sticksTaken = 0;
-		while (!this.theGame.isGameOver()) {
-			sticksTaken += this.theComputer.getSticksOnThisTurn(); 			 
-		}
-		this.lblNumberTaken.setText("Number of sticks taken: " + sticksTaken);
+			
+		String sticks = Integer.toString(this.theComputer.getSticksOnThisTurn());
+		this.lblNumberTaken.setText(sticks);
 		
 		if (isEnabled()) {
 			setEnabled(false);
