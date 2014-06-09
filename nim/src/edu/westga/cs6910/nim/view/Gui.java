@@ -80,14 +80,14 @@ public class Gui {
 		//		 3. Instantiate this.pnlComputerPlayer, add it to
 		//			the content pane at the right, and disable it.
 		
-		this.pnlHumanPlayer = new NewGamePanel(this.theGame);
+		this.pnlHumanPlayer = new HumanPlayerPanel(this.theGame);
 		this.contentPane.add(this.pnlHumanPlayer, BorderLayout.WEST);
 		this.pnlHumanPlayer.setEnabled(false);
 		
-		this.pnlGameInfo = new NewGamePanel(this.theGame);
+		this.pnlGameInfo = new GameStatusPanel(this.theGame);
 		this.contentPane.add(this.pnlGameInfo, BorderLayout.CENTER);
 		
-		this.pnlComputerPlayer = new NewGamePanel(this.theGame);
+		this.pnlComputerPlayer = new ComputerPlayerPanel(this.theGame);
 		this.contentPane.add(this.pnlComputerPlayer, BorderLayout.EAST);
 		this.pnlComputerPlayer.setEnabled(false);
 		
@@ -179,7 +179,8 @@ public class Gui {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO: Enable pnlHumanPlayer and start a game
 				//		 with theHuman playing first.
-				
+				Gui.this.pnlHumanPlayer.setEnabled(true);
+				Gui.this.theGame.startNewGame(NewGamePanel.this.theHuman, NewGamePanel.this.theComputer);
 				
 			}
 		}

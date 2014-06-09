@@ -149,7 +149,11 @@ public class ComputerPlayerPanel extends JPanel implements Observer {
 			// TODO: if the game isn't finished: 
 			// 		 - Set theComputer's pile and number of sticks.
 			//		 - Tell theGame to play a move.
-			
+			if (!ComputerPlayerPanel.this.theGame.isGameOver()) {
+				ComputerPlayerPanel.this.theComputer.setPileForThisTurn(ComputerPlayerPanel.this.theGame.getPile());
+				ComputerPlayerPanel.this.theComputer.setNumberSticksToTake((int)ComputerPlayerPanel.this.cmbNumberToTake.getSelectedItem());
+				ComputerPlayerPanel.this.theGame.play();
+			}
 
 		}
 
