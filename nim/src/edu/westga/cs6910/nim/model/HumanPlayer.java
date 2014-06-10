@@ -4,6 +4,7 @@ package edu.westga.cs6910.nim.model;
  * HumanPlayer represents a human player in the game Nim.
  * 
  * @author CS 6910
+ * @author April Parmer
  * @version Summer 2014
  */
 public class HumanPlayer implements Player {
@@ -22,8 +23,8 @@ public class HumanPlayer implements Player {
 	 * @ensure name().equals(name) && sticksRemoved() == 0
 	 */
 	public HumanPlayer(String name) {
+		super();
 		this.name = name;
-		this.sticksToTake = 0;
 	}
 
 	// ************************** mutator methods ********************************

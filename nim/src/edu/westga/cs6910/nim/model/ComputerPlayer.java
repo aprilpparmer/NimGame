@@ -13,6 +13,7 @@ package edu.westga.cs6910.nim.model;
  * It removes 1 stick at a time.
  * 
  * @author CS 6910
+ * @author April Parmer
  * @version Summer 2014
  */
 public class ComputerPlayer implements Player {
@@ -30,8 +31,8 @@ public class ComputerPlayer implements Player {
 	 * 
 	 */
 	public ComputerPlayer() {
+		super();
 		this.name = NAME;
-		this.sticksToTake = 0;
 	}
 	
 	

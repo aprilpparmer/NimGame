@@ -11,14 +11,14 @@ package edu.westga.cs6910.nim.model;
  *
  */
 public abstract class AbstractPlayer implements Player {
-	private static final String NAME = "Simple computer";
-	private String name;
 	private Pile thePile;
 	private int sticksToTake;
+	private String name;
 	
 	
-	public AbstractPlayer() {
-		
+	public AbstractPlayer(String name) {
+		this.name = name;
+		this.sticksToTake = 0;
 	}
 	
 	public void takeTurn() {
