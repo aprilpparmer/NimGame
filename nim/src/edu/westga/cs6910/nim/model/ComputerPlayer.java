@@ -46,20 +46,6 @@ public class ComputerPlayer extends AbstractPlayer implements Player {
 			throw new IllegalArgumentException("Invalid Pile");
 		}
 		this.thePile = aPile;
-		
-	}
-
-
-	@Override
-	/**
-	 * Implements Player's setNumberSticksToTake(int), but is not
-	 * normally called by clients objects. Instead, clients usually
-	 * call the 0-parameter version.
-	 * 
-	 * @see Player#setNumberSticksToTake(int)
-	 */
-	public void setNumberSticksToTake(int number) {
-		this.sticksToTake = number;
 	}
 
 	@Override	

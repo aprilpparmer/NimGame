@@ -29,6 +29,16 @@ public abstract class AbstractPlayer implements Player {
 		this.thePile.removeSticks(this.sticksToTake);
 	}
 
+	/**
+	 * Implements Player's setNumberSticksToTake(int), but is not
+	 * normally called by clients objects. Instead, clients usually
+	 * call the 0-parameter version.
+	 * 
+	 * @see Player#setNumberSticksToTake(int)
+	 */
+	public void setNumberSticksToTake(int number) {
+		this.sticksToTake = number;
+	}
 	
 	
 }

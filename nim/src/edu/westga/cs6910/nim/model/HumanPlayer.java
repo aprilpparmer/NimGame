@@ -37,14 +37,6 @@ public class HumanPlayer extends AbstractPlayer implements Player {
 		this.thePile = aPile;
 
 	}
-
-	@Override
-	/**
-	 * @see Player#setNumberSticksToTake()
-	 */
-	public void setNumberSticksToTake(int number) {
-		this.sticksToTake = number;
-	}
 	
 	@Override
 	/**
