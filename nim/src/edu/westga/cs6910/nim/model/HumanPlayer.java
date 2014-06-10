@@ -7,7 +7,7 @@ package edu.westga.cs6910.nim.model;
  * @author April Parmer
  * @version Summer 2014
  */
-public class HumanPlayer implements Player {
+public class HumanPlayer extends AbstractPlayer implements Player {
 
 	private String name;
 	private int sticksToTake;
@@ -23,8 +23,7 @@ public class HumanPlayer implements Player {
 	 * @ensure name().equals(name) && sticksRemoved() == 0
 	 */
 	public HumanPlayer(String name) {
-		super();
-		this.name = name;
+		super(name);
 	}
 
 	// ************************** mutator methods ********************************
@@ -37,15 +36,6 @@ public class HumanPlayer implements Player {
 	public void setPileForThisTurn(Pile aPile) {
 		this.thePile = aPile;
 
-	}
-
-	@Override
-	/**
-	 * @see Player#takeTurn(Pile)
-	 */
-	public void takeTurn() {
-
-		this.thePile.removeSticks(this.sticksToTake);
 	}
 
 	@Override

@@ -21,9 +21,14 @@ public abstract class AbstractPlayer implements Player {
 		this.sticksToTake = 0;
 	}
 	
+	/**
+	 * @see Player#takeTurn(Pile)
+	 */
 	public void takeTurn() {
+
 		this.thePile.removeSticks(this.sticksToTake);
 	}
+
 	
 	
 }

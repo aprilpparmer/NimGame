@@ -16,7 +16,7 @@ package edu.westga.cs6910.nim.model;
  * @author April Parmer
  * @version Summer 2014
  */
-public class ComputerPlayer implements Player {
+public class ComputerPlayer extends AbstractPlayer implements Player {
 	
 	private static final String NAME = "Simple computer";
 	
@@ -31,21 +31,11 @@ public class ComputerPlayer implements Player {
 	 * 
 	 */
 	public ComputerPlayer() {
-		super();
-		this.name = NAME;
+		super(NAME);
 	}
 	
 	
 	//*************************** mutator methods ****************************
-	
-	@Override
-	/**
-	 * @see Player#takeTurn()
-	 */	
-	public void takeTurn() {				
-		this.thePile.removeSticks(this.sticksToTake);
-	}
-	
 
 	@Override
 	/**
