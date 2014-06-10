@@ -25,7 +25,6 @@ public abstract class AbstractPlayer implements Player {
 	 * @see Player#takeTurn(Pile)
 	 */
 	public void takeTurn() {
-
 		this.thePile.removeSticks(this.sticksToTake);
 	}
 

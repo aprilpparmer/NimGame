@@ -7,7 +7,7 @@ package edu.westga.cs6910.nim.model;
  * @author April Parmer
  * @version Summer 2014
  */
-public class HumanPlayer extends AbstractPlayer implements Player {
+public class HumanPlayer extends AbstractPlayer {
 
 	private String name;
 	private int sticksToTake;
@@ -34,6 +34,7 @@ public class HumanPlayer extends AbstractPlayer implements Player {
 	 */
 
 	public void setPileForThisTurn(Pile aPile) {
+		super.setPileForThisTurn(aPile);
 		this.thePile = aPile;
 
 	}
@@ -50,6 +51,7 @@ public class HumanPlayer extends AbstractPlayer implements Player {
 	 * @see Player#setNumberSticksToTake()
 	 */
 	public void setNumberSticksToTake() { 
+		super.setNumberSticksToTake();
 		this.sticksToTake = 
 				Math.min(this.thePile.getSticksLeft() - 1, Game.MAX_STICKS_PER_TURN);
 		
