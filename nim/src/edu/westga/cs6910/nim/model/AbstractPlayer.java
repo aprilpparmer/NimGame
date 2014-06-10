@@ -40,5 +40,50 @@ public abstract class AbstractPlayer implements Player {
 		this.sticksToTake = number;
 	}
 	
+	/**
+	 * Implements Player's setNumberSticksToTake() to set the number
+	 * of sticks to 1.
+	 * 
+	 * @ensure  sticksOnThisTurn() == 1
+	 * 
+	 * @see Player#setNumberSticksToTake()
+	 */
+	public void setNumberSticksToTake() {
+		this.sticksToTake = 1;
+	}
+	
+	/**
+	 * @see Player#getName()
+	 */
+
+	public String getName() {
+		return this.name;
+	}
+
+	/**
+	 * @see Player#getSticksOnThisTurn()
+	 */
+
+	public int getSticksOnThisTurn() {
+		return this.sticksToTake;
+	}
+
+	/**
+	 * @see Player#setPileForThisTurn(Pile)
+	 */	
+	public void setPileForThisTurn(Pile aPile) {
+		if (aPile == null) {
+			throw new IllegalArgumentException("Invalid Pile");
+		}
+		this.thePile = aPile;
+	}
+	/**
+	 * @see Player#getPileForThisTurn()
+	 */
+
+	public Pile getPileForThisTurn() {
+		return this.thePile;
+	}
+
 	
 }

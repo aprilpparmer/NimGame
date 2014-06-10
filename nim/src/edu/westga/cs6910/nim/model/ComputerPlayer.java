@@ -23,8 +23,6 @@ public class ComputerPlayer extends AbstractPlayer implements Player {
 	private String name;
 	private int sticksToTake;
 
-	private Pile thePile;
-
 
 	/**
 	 * Creates a new ComputerPlayer with the specified name.
@@ -35,63 +33,7 @@ public class ComputerPlayer extends AbstractPlayer implements Player {
 	}
 	
 	
-	//*************************** mutator methods ****************************
-
-	@Override
-	/**
-	 * @see Player#setPileForThisTurn(Pile)
-	 */	
-	public void setPileForThisTurn(Pile aPile) {
-		if (aPile == null) {
-			throw new IllegalArgumentException("Invalid Pile");
-		}
-		this.thePile = aPile;
-	}
-
-	@Override	
-	/**
-	 * Implements Player's setNumberSticksToTake() to set the number
-	 * of sticks to 1.
-	 * 
-	 * @ensure  sticksOnThisTurn() == 1
-	 * 
-	 * @see Player#setNumberSticksToTake()
-	 */
-
-	public void setNumberSticksToTake() {
-		this.sticksToTake = 1;
-	}
-
-	
-	
 	//*************************** accessor methods ****************************
-
-	@Override	
-	/**
-	 * @see Player#getName()
-	 */
-
-	public String getName() {
-		return this.name;
-	}
-
-	@Override	
-	/**
-	 * @see Player#getSticksOnThisTurn()
-	 */
-
-	public int getSticksOnThisTurn() {
-		return this.sticksToTake;
-	}
-	
-	@Override	
-	/**
-	 * @see Player#getPileForThisTurn()
-	 */
-
-	public Pile getPileForThisTurn() {
-		return this.thePile;
-	}
 
 	/**
 	 * Returns a String representation of this ComputerPlayer by giving its name 

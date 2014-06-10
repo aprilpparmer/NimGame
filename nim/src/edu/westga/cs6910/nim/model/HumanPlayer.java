@@ -49,36 +49,10 @@ public class HumanPlayer extends AbstractPlayer implements Player {
 	 * 
 	 * @see Player#setNumberSticksToTake()
 	 */
-	public void setNumberSticksToTake() {
+	public void setNumberSticksToTake() { 
 		this.sticksToTake = 
 				Math.min(this.thePile.getSticksLeft() - 1, Game.MAX_STICKS_PER_TURN);
 		
-	}
-
-	@Override
-	/**
-	 * @see edu.westga.cs6910.nim.model.Player#getName()
-	 */
-	public String getName() {
-		return this.name;
-	}
-
-	@Override	
-	/**
-	 * @see edu.westga.cs6910.nim.model.Player#getSticksOnThisTurn()
-	 */
-
-	public int getSticksOnThisTurn() {
-		return this.sticksToTake;
-	}
-	
-	@Override
-	/**
-	 * @see edu.westga.cs6910.nim.model.Player#getPileForThisTurn()
-	 */
-
-	public Pile getPileForThisTurn() {
-		return this.thePile;
 	}
 	
 	/**
