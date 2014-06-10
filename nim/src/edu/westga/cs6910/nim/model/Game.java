@@ -5,6 +5,7 @@ import java.util.Observable;
 /**
  * Game represents a Nim game with 1 pile of sticks.
  * @author CS 6910
+ * @author April Parmer
  * @version Summer 2014
  */
 public class Game extends Observable {
@@ -89,12 +90,13 @@ public class Game extends Observable {
 		//		 3. Tell all observers that a significant change
 		//			occurred: set the changed flag and notify observers.
 		//          See http://tinyurl.com/javaObserverPattern
-		if (!isGameOver()) {
-			getCurrentPlayer().takeTurn();
-			
-		}
+
+		this.getCurrentPlayer().takeTurn();
 		
 		this.swapWhoseTurn();
+		setChanged();
+		notifyObservers();
+		
 		
 	}
 
@@ -139,7 +141,7 @@ public class Game extends Observable {
 	/**
 	 * Return whether the game is over.
 	 * 
-	 * @return true iff sticksLeft() == 1
+	 * @return true if sticksLeft() == 1
 	 */
 	public boolean isGameOver() {
 		return this.thePile.getSticksLeft() == 1;
@@ -178,6 +180,7 @@ public class Game extends Observable {
 		//       the current player and vice versa. 
 		if (getCurrentPlayer() == this.theHuman) {
 			this.currentPlayer = this.theComputer;
+			
 		} else {
 			this.currentPlayer = this.theHuman;
 		}

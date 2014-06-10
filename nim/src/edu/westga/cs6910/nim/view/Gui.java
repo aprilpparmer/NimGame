@@ -19,6 +19,7 @@ import edu.westga.cs6910.nim.model.Player;
  * Defines a GUI for the 1-pile Nim game.
  *  
  * @author CS 6910
+ * @author April Parmer
  * @version Summer 2014
  */
 public class Gui {
@@ -127,7 +128,7 @@ public class Gui {
 			this.radHumanPlayer = new JRadioButton("Human first");	
 			this.radHumanPlayer.addActionListener(new HumanFirstListener());
 			
-			// TODO: Instantiate this.btnComputerPlayer and add 
+			// TODO: Instantiate this.radComputerPlayer and add 
 			//		 ComputerFirstListener as its action listener.
 			
 			this.radComputerPlayer = new JRadioButton("Computer first");

@@ -1,15 +1,14 @@
 package edu.westga.cs6910.nim.view;
 
-import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -22,6 +21,7 @@ import edu.westga.cs6910.nim.model.Game;
  * player took on its turn.
  * 
  * @author CS 6910
+ * @author April Parmer
  * @version Summer 2014
  */
 public class ComputerPlayerPanel extends JPanel implements Observer {
@@ -30,7 +30,6 @@ public class ComputerPlayerPanel extends JPanel implements Observer {
 	private static final long serialVersionUID = 140604L;
 	private JLabel lblNumberTaken;
 	private ComputerPlayer theComputer;
-	private JComboBox<Integer> cmbNumberToTake;
 	private JButton btnTakeSticks;
 
 	/**
@@ -96,12 +95,12 @@ public class ComputerPlayerPanel extends JPanel implements Observer {
 		//			or vice versa.
 			
 		String sticks = Integer.toString(this.theComputer.getSticksOnThisTurn());
-		this.lblNumberTaken.setText(sticks);
+		this.lblNumberTaken.setText("Number of sticks taken: " + sticks);
 		
-		if (isEnabled()) {
-			setEnabled(false);
+		if (this.isEnabled()) {
+			this.setEnabled(false);
 		} else {
-			setEnabled(true);
+			this.setEnabled(true);
 		}
 	}
 	
@@ -113,16 +112,11 @@ public class ComputerPlayerPanel extends JPanel implements Observer {
 		// TODO: Using the other panel classes as a model, build this panel.
 		this.setBorder(BorderFactory.createTitledBorder(this.theComputer.getName()));
 		
-		JLabel lblNumberToTake = new JLabel("Number of sticks to take:");
-		this.add(lblNumberToTake);
+		this.lblNumberTaken = new JLabel("Number of sticks taken: " + this.theComputer.getSticksOnThisTurn());
+		this.add(this.lblNumberTaken);
 		
-		Integer[] numbers = {1, 2, 3};
-		this.cmbNumberToTake = new JComboBox<Integer>(numbers);
-		this.cmbNumberToTake.setEditable(false);
 		
-		this.add(this.cmbNumberToTake, BorderLayout.SOUTH);
-		
-		this.btnTakeSticks = new JButton("Take sticks");
+		this.btnTakeSticks = new JButton("Take turn");
 		this.btnTakeSticks.addActionListener(new TakeTurnListener());
 		this.add(this.btnTakeSticks);
 	}
@@ -147,9 +141,16 @@ public class ComputerPlayerPanel extends JPanel implements Observer {
 			// TODO: if the game isn't finished: 
 			// 		 - Set theComputer's pile and number of sticks.
 			//		 - Tell theGame to play a move.
-			if (!ComputerPlayerPanel.this.theGame.isGameOver()) {
+			Random rand = new Random();
+			int number = 0;
+			if (ComputerPlayerPanel.this.theGame.getSticksLeft() <= 2) {
+				number = 1;
+			} else {
+				number = rand.nextInt(2) + 1;
+			}
+			if (!ComputerPlayerPanel.this.theGame.isGameOver()) { 
 				ComputerPlayerPanel.this.theComputer.setPileForThisTurn(ComputerPlayerPanel.this.theGame.getPile());
-				ComputerPlayerPanel.this.theComputer.setNumberSticksToTake((int)ComputerPlayerPanel.this.cmbNumberToTake.getSelectedItem());
+				ComputerPlayerPanel.this.theComputer.setNumberSticksToTake(number);
 				ComputerPlayerPanel.this.theGame.play();
 			}
 
