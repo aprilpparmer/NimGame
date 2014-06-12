@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -141,16 +140,10 @@ public class ComputerPlayerPanel extends JPanel implements Observer {
 			// TODO: if the game isn't finished: 
 			// 		 - Set theComputer's pile and number of sticks.
 			//		 - Tell theGame to play a move.
-			Random rand = new Random();
-			int number = 0;
-			if (ComputerPlayerPanel.this.theGame.getSticksLeft() <= 2) {
-				number = 1;
-			} else {
-				number = rand.nextInt(2) + 1;
-			}
+
 			if (!ComputerPlayerPanel.this.theGame.isGameOver()) { 
 				ComputerPlayerPanel.this.theComputer.setPileForThisTurn(ComputerPlayerPanel.this.theGame.getPile());
-				ComputerPlayerPanel.this.theComputer.setNumberSticksToTake(number);
+				ComputerPlayerPanel.this.theComputer.setNumberSticksToTake();
 				ComputerPlayerPanel.this.theGame.play();
 			}
 
