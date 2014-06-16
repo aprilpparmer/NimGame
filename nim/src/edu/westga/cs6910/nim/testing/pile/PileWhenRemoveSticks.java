@@ -27,5 +27,15 @@ public class PileWhenRemoveSticks {
 		twoStickPile.removeSticks(1);
 		assertEquals(1, twoStickPile.getSticksLeft());
 	}
+	
+	/**
+	 * Tests that a pile has 3 sticks left after removing 2 sticks from a 5 stick pile.
+	 */
+	@Test
+	public void testShouldHave3SticksLeftAfterRemoving2SticksFrom5StickPile() {
+		Pile fiveStickPile = new Pile(5);
+		fiveStickPile.removeSticks(2);
+		assertEquals(3, fiveStickPile.getSticksLeft());
+	}
 
 }
