@@ -35,5 +35,14 @@ public class PilesCreated {
 		Pile tenStickPile = new Pile(10);
 		assertEquals("Pile size: 10", tenStickPile.toString());
 	}
+	
+	/**
+	 * Tests the creation of a Pile with 555 sticks.
+	 */
+	@Test
+	public void testShouldProducePileWith555Sticks() {
+		Pile fivesStickPile = new Pile(555);
+		assertEquals("Pile size: 555", fivesStickPile.toString());
+	}
 
 }
