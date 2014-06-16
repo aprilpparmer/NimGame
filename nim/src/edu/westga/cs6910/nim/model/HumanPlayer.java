@@ -58,13 +58,13 @@ public class HumanPlayer extends AbstractPlayer {
 	}
 	
 	/**
-	 * Returns a String representation of this ComputerPlayer by giving its name 
+	 * Returns a String representation of this HumanPlayer by giving its name 
 	 * 	and number of sticks to take
 	 * 
 	 * @return	A String representation of the object
 	 */
 	public String toString() {
-		return "Computer Player named: " + this.name
+		return "Human Player named: " + this.name
 				+ " with " + this.sticksToTake + " sticks to take";
 	}
 }
