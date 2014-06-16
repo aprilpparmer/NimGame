@@ -7,15 +7,24 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import edu.westga.cs6910.nim.model.Pile;
+
 /**
- * @author april_000
+ * This class tests the creation of a Constructor in the Pile class.
+ * 
+ * @author April Parmer
+ * @version Summer 2014
  *
  */
 public class PileIsCreated {
 
+	/**
+	 * Tests the creation of a Pile with 1 stick.
+	 */
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testShouldProducePileWith1Stick() {
+		Pile oneStickPile = new Pile(1);
+		assertEquals("Pile size: 1", oneStickPile.toString());
 	}
 
 }
