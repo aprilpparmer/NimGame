@@ -36,5 +36,13 @@ public class HumanPlayerCreated {
 		AbstractPlayer donna = new HumanPlayer("Donna");
 		assertEquals("Human Player named: Donna with 0 sticks to take", donna.toString());
 	}
-	
+
+	/**
+	 * Creates a HumanPlayer with the name of "David" and 0 sticks to take.
+	 */
+	@Test
+	public void testCreateHumanPlayerDavidWith0Sticks() {
+		AbstractPlayer david = new HumanPlayer("David");
+		assertEquals("Human Player named: David with 0 sticks to take", david.toString());
+	}
 }
