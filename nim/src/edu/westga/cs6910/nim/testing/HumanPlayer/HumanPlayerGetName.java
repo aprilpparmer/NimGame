@@ -37,4 +37,13 @@ public class HumanPlayerGetName {
 		assertEquals("Bob", bob.getName());
 	}
 	
+	/**
+	 * Returns the name of a human player named Jake.
+	 */
+	@Test
+	public void testHumanPlayerGetNameJake() {
+		AbstractPlayer jake = new HumanPlayer("Jake");
+		assertEquals("Jake", jake.getName());
+	}
+	
 }
