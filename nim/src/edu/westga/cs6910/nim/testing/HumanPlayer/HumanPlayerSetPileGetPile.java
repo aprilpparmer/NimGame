@@ -40,5 +40,16 @@ public class HumanPlayerSetPileGetPile {
 		john.setPileForThisTurn(pile);
 		assertEquals("Pile size: 5", john.getPileForThisTurn().toString());
 	}
+	
+	/**
+	 * Sets a pile of 7 for this turn, and then returns it.
+	 */
+	@Test
+	public void testSetPile7GetPile() {
+		Pile pile = new Pile(7);
+		AbstractPlayer john = new HumanPlayer("John");
+		john.setPileForThisTurn(pile);
+		assertEquals("Pile size: 7", john.getPileForThisTurn().toString());
+	}
 
 }
