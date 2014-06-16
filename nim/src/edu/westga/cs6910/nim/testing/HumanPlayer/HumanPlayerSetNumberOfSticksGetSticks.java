@@ -28,5 +28,15 @@ public class HumanPlayerSetNumberOfSticksGetSticks {
 		john.setNumberSticksToTake(3);
 		assertEquals(3, john.getSticksOnThisTurn());
 	}
-
+	
+	/**
+	 * Creates a HumanPlayer and sets the number of sticks to take to 2, then returns the number taken.
+	 */
+	@Test
+	public void testSet2SticksGet2Stick() {
+		AbstractPlayer john = new HumanPlayer("John");
+		john.setNumberSticksToTake(2);
+		assertEquals(2, john.getSticksOnThisTurn());
+	}
+	
 }
