@@ -35,5 +35,14 @@ public class PileGetSticksLeft {
 		Pile fiveSticksPile = new Pile(5);
 		assertEquals(5, fiveSticksPile.getSticksLeft());
 	}
+	
+	/**
+	 * Tests that 30 sticks are left in the pile.
+	 */
+	@Test
+	public void testWith30SticksPileShouldHave30SticksLeft() {
+		Pile thirtySticksPile = new Pile(30);
+		assertEquals(30, thirtySticksPile.getSticksLeft());
+	}
 
 }
