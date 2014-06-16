@@ -9,7 +9,6 @@ package edu.westga.cs6910.nim.model;
  */
 public class HumanPlayer extends AbstractPlayer {
 
-	private String name;
 	private int sticksToTake;
 	private Pile thePile;
 
@@ -64,7 +63,7 @@ public class HumanPlayer extends AbstractPlayer {
 	 * @return	A String representation of the object
 	 */
 	public String toString() {
-		return "Human Player named: " + this.name
+		return "Human Player named: " + this.getName()
 				+ " with " + this.sticksToTake + " sticks to take";
 	}
 }
