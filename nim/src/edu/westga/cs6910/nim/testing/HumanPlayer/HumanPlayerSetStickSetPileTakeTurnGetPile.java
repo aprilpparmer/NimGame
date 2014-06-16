@@ -44,5 +44,19 @@ public class HumanPlayerSetStickSetPileTakeTurnGetPile {
 		john.takeTurn();
 		assertEquals("Pile size: 4", john.getPileForThisTurn().toString());
 	}
+	
+	/**
+	 * Tests takeTurn method by taking 1 stick from a pile of 3, and returning the 2 that are left.
+	 */
+	@Test
+	public void testSetPile3Sticks1TakeTurnGetPile2() {
+		Pile pile = new Pile(3);
+		AbstractPlayer john = new HumanPlayer("John");
+		
+		john.setPileForThisTurn(pile);
+		john.setNumberSticksToTake(1);
+		john.takeTurn();
+		assertEquals("Pile size: 2", john.getPileForThisTurn().toString());
+	}
 
 }
