@@ -20,7 +20,6 @@ public class ComputerPlayer extends AbstractPlayer {
 	
 	private static final String NAME = "Simple computer";
 	
-	private String name;
 	private int sticksToTake;
 
 
@@ -42,7 +41,7 @@ public class ComputerPlayer extends AbstractPlayer {
 	 * @return	A String representation of the object
 	 */
 	public String toString() {
-		return "Computer Player named: " + this.name
+		return "Computer Player named: " + this.getName()
 				+ " with " + this.sticksToTake + " sticks to take";
 	}
 
