@@ -50,10 +50,9 @@ public class HumanPlayer extends AbstractPlayer {
 	 * @see Player#setNumberSticksToTake()
 	 */
 	public void setNumberSticksToTake() { 
-		super.setNumberSticksToTake();
 		this.sticksToTake = 
 				Math.min(this.thePile.getSticksLeft() - 1, Game.MAX_STICKS_PER_TURN);
-		
+		super.setNumberSticksToTake(this.sticksToTake);
 	}
 	
 	/**
