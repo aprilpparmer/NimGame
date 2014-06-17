@@ -28,5 +28,29 @@ public class ComputerPlayerSetPileForThisTurn {
 		comp.setPileForThisTurn(pile);
 		assertEquals("Pile size: 5",  comp.getPileForThisTurn().toString());
 	}
+	
+	/**
+	 * Sets a Pile of 10 sticks and returns it.
+	 */
+	@Test
+	public void testSetPile10GetPile() {
+		AbstractPlayer comp = new ComputerPlayer();
+		Pile pile = new Pile(10);
+		
+		comp.setPileForThisTurn(pile);
+		assertEquals("Pile size: 10", comp.getPileForThisTurn().toString());
+	}
+	
+	/**
+	 * Sets a Pile of 15 sticks and returns it.
+	 */
+	@Test
+	public void testSetPile15GetPile() {
+		AbstractPlayer comp = new ComputerPlayer();
+		Pile pile = new Pile(15);
+		
+		comp.setPileForThisTurn(pile);
+		assertEquals("Pile size: 15", comp.getPileForThisTurn().toString());
+	}
 
 }
