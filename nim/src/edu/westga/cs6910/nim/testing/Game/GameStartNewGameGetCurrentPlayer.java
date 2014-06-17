@@ -32,5 +32,33 @@ public class GameStartNewGameGetCurrentPlayer {
 		game.startNewGame(john, comp);
 		assertEquals("John", game.getCurrentPlayer().getName());
 	}
+	
+	/**
+	 * Starts a game with computer player first.
+	 */
+	@Test
+	public void testStartComputerFirst() {
+		HumanPlayer john = new HumanPlayer("John");
+		ComputerPlayer comp = new ComputerPlayer();
+		Game game = new Game(john, comp);
+		
+		game.startNewGame(comp, john);
+		assertEquals("Simple computer", game.getCurrentPlayer().getName());
+	}
+	
+	/**
+	 * Starts a game with human player first.
+	 */
+	@Test
+	public void testStartHumanAprilFirst() {
+		HumanPlayer april = new HumanPlayer("April");
+		ComputerPlayer comp = new ComputerPlayer();
+		Game game = new Game(april, comp);
+
+		game.startNewGame(april, comp);
+		assertEquals("April", game.getCurrentPlayer().getName());
+	
+	}
+	
 
 }
