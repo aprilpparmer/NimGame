@@ -31,4 +31,25 @@ public class GameGetHumanPlayer {
 		assertEquals("John", game.getHumanPlayer().getName());
 	}
 
+	/**
+	 * Creates a Game with HumanPlayer April and ComputerPlayer Simple computer
+	 */
+	@Test
+	public void testGetHumanPlayerApril() {
+		HumanPlayer april = new HumanPlayer("April");
+		ComputerPlayer comp = new ComputerPlayer();
+		Game game = new Game(april, comp);
+		assertEquals("April", game.getHumanPlayer().getName());
+	}
+	
+	/**
+	 * Creates a Game with HumanPlayer David and ComputerPlayer Simple computer
+	 */
+	@Test
+	public void testGetHumanPlayerDavid() {
+		HumanPlayer david = new HumanPlayer("David");
+		ComputerPlayer comp = new ComputerPlayer();
+		Game game = new Game(david, comp);
+		assertEquals("David", game.getHumanPlayer().getName());
+	}	
 }
