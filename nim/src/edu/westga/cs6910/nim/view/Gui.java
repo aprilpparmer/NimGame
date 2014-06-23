@@ -5,12 +5,17 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.KeyStroke;
 
 import edu.westga.cs6910.nim.model.Game;
 import edu.westga.cs6910.nim.model.Player;
@@ -47,6 +52,7 @@ public class Gui {
 	public Gui(Game theGame) {
 		this.theGame = theGame;
 		this.createAndShowGUI();
+		this.buildMenuBar();
 	}
 	
 	
@@ -65,6 +71,9 @@ public class Gui {
 		this.theFrame.setMinimumSize(new Dimension(800, 200));
 		this.theFrame.pack();
 		this.theFrame.setVisible(true);
+		
+		this.theFrame.setJMenuBar(this.buildMenuBar());
+		
 	}
 
 	private void buildContentPane() {
@@ -92,8 +101,58 @@ public class Gui {
 		this.contentPane.add(this.pnlComputerPlayer, BorderLayout.EAST);
 		this.pnlComputerPlayer.setEnabled(false);
 		
+		
 	}
 	
+	/**
+	 * Builds Menu Bar
+	 */
+	private JMenuBar buildMenuBar() {
+	JMenuBar menuBar = new JMenuBar();
+	menuBar.add(setFileMenu());
+	menuBar.add(setSettingsMenu());
+	
+	return menuBar;
+	}
+	
+	/**
+	 * Builds the File Menu
+	 */
+	private JMenu setFileMenu() {
+		JMenu file = new JMenu("File");
+		file.setMnemonic(KeyEvent.VK_F);
+		
+		JMenuItem exitMenuItem = new JMenuItem("Exit");
+		exitMenuItem.setMnemonic(KeyEvent.VK_X);
+		exitMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.ALT_MASK));
+		file.add(exitMenuItem);
+		
+		return file;
+	}
+	
+	private JMenu setSettingsMenu() {
+		JMenu settings = new JMenu("Settings");
+		settings.setMnemonic(KeyEvent.VK_S);
+		
+		JMenu computerPlayerItem = new JMenu("Computer Player");
+		computerPlayerItem.setMnemonic(KeyEvent.VK_P);
+		
+		JMenuItem cautious = new JMenuItem("Cautious");
+		cautious.setMnemonic(KeyEvent.VK_C);
+		computerPlayerItem.add(cautious);
+		
+		JMenuItem greedy = new JMenuItem("Greedy");
+		greedy.setMnemonic(KeyEvent.VK_G);
+		computerPlayerItem.add(greedy);
+		
+		JMenuItem random = new JMenuItem("Random");
+		random.setMnemonic(KeyEvent.VK_R);
+		computerPlayerItem.add(random);
+		
+		settings.add(computerPlayerItem);
+		
+		return settings;
+	}
 	
 	
 	//************************* private inner classes *************************
