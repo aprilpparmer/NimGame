@@ -23,6 +23,7 @@ public class HumanPlayer extends AbstractPlayer {
 	 */
 	public HumanPlayer(String name) {
 		super(name);
+		this.sticksToTake = 0;
 	}
 
 	// ************************** mutator methods ********************************
