@@ -24,4 +24,21 @@ public class WhenTestHowManySticks {
 		assertEquals(1, game.howManySticks(10));
 	}
 
+	/**
+	 * Tests that 1 stick is returned on a pile size of 5.
+	 */
+	@Test
+	public void testReturn1StickPile5() {
+		CautiousStrategy game = new CautiousStrategy();
+		assertEquals(1, game.howManySticks(5));
+	}
+	
+	/**
+	 * Tests that 1 stick is returned on a pile size of 2.
+	 */
+	@Test
+	public void testReturn1StickPile2() {
+		CautiousStrategy game = new CautiousStrategy();
+		assertEquals(1, game.howManySticks(2));
+	}
 }
