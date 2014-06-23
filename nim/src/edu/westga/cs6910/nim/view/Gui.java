@@ -127,6 +127,12 @@ public class Gui {
 		JMenuItem exitMenuItem = new JMenuItem("Exit");
 		exitMenuItem.setMnemonic(KeyEvent.VK_X);
 		exitMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.ALT_MASK));
+		exitMenuItem.addActionListener( 
+				new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						System.exit(0);
+					}
+				});
 		file.add(exitMenuItem);
 		
 		return file;
