@@ -21,16 +21,32 @@ public class ComputerPlayer extends AbstractPlayer {
 	private static final String NAME = "Simple computer";
 	
 	private int sticksToTake;
+	private NumberOfSticksStrategy numberOfSticksStrategy;
 
 
 	/**
 	 * Creates a new ComputerPlayer with the specified name.
-	 * 
 	 */
 	public ComputerPlayer() {
 		super(NAME);
+		this.numberOfSticksStrategy = new CautiousStrategy();
 	}
 	
+	/**
+	 * Creates a new ComputerPlayer with a specified strategy.
+	 * 
+	 * @param numberOfSticksStrategy - the numberOfSticksStrategy being implemented
+	 * 		by the ComputerPlayer
+	 * 
+	 * Precondition: numberOfSticksStrategy must not be null
+	 */
+	public ComputerPlayer(NumberOfSticksStrategy numberOfSticksStrategy) {
+		super(NAME);
+		if (numberOfSticksStrategy == null) {
+			throw new IllegalArgumentException("The strategy does not exist");
+		}
+		this.numberOfSticksStrategy = numberOfSticksStrategy;
+	}
 	
 	//*************************** accessor methods ****************************
 
