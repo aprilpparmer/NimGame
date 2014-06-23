@@ -106,17 +106,19 @@ public class Gui {
 	
 	/**
 	 * Builds Menu Bar
+	 * @return menuBar
 	 */
 	private JMenuBar buildMenuBar() {
 	JMenuBar menuBar = new JMenuBar();
-	menuBar.add(setFileMenu());
-	menuBar.add(setSettingsMenu());
+	menuBar.add(this.setFileMenu());
+	menuBar.add(this.setSettingsMenu());
 	
 	return menuBar;
 	}
 	
 	/**
 	 * Builds the File Menu
+	 * @return file menu
 	 */
 	private JMenu setFileMenu() {
 		JMenu file = new JMenu("File");
@@ -130,10 +132,23 @@ public class Gui {
 		return file;
 	}
 	
+	/**
+	 * Builds settings menu
+	 * @return settings menu
+	 */
 	private JMenu setSettingsMenu() {
 		JMenu settings = new JMenu("Settings");
 		settings.setMnemonic(KeyEvent.VK_S);
+		settings.add(this.setComputerPlayerMenu());
 		
+		return settings;
+	}
+	
+	/**
+	 * Builds computer player menu
+	 * @return computer player menu
+	 */
+	private JMenu setComputerPlayerMenu() {
 		JMenu computerPlayerItem = new JMenu("Computer Player");
 		computerPlayerItem.setMnemonic(KeyEvent.VK_P);
 		
@@ -149,9 +164,7 @@ public class Gui {
 		random.setMnemonic(KeyEvent.VK_R);
 		computerPlayerItem.add(random);
 		
-		settings.add(computerPlayerItem);
-		
-		return settings;
+		return computerPlayerItem;
 	}
 	
 	
