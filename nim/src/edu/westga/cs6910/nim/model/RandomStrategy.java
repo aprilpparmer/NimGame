@@ -37,7 +37,7 @@ public class RandomStrategy implements NumberOfSticksStrategy {
 		if (pileSize <= 0) {
 			throw new IllegalArgumentException("The pile size must be greater than 0");
 		}
-		int randomNumber = this.rand.nextInt(pileSize - 2) + 1;
+		int randomNumber = this.rand.nextInt(Math.min(pileSize - 1, Game.MAX_STICKS_PER_TURN)) + 1;
 		return randomNumber;
 	}
 }
