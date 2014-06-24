@@ -20,6 +20,7 @@ import javax.swing.KeyStroke;
 import edu.westga.cs6910.nim.model.CautiousStrategy;
 import edu.westga.cs6910.nim.model.Game;
 import edu.westga.cs6910.nim.model.Player;
+import edu.westga.cs6910.nim.model.RandomStrategy;
 
 /**
  * Defines a GUI for the 1-pile Nim game.
@@ -176,6 +177,13 @@ public class Gui {
 		
 		JMenuItem random = new JMenuItem("Random");
 		random.setMnemonic(KeyEvent.VK_R);
+		random.addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						RandomStrategy strategy = new RandomStrategy();
+						Gui.this.theGame.getComputerPlayer().setStrategy(strategy);
+					}
+				});
 		computerPlayerItem.add(random);
 		
 		return computerPlayerItem;
