@@ -19,6 +19,7 @@ import javax.swing.KeyStroke;
 
 import edu.westga.cs6910.nim.model.CautiousStrategy;
 import edu.westga.cs6910.nim.model.Game;
+import edu.westga.cs6910.nim.model.GreedyStrategy;
 import edu.westga.cs6910.nim.model.Player;
 import edu.westga.cs6910.nim.model.RandomStrategy;
 
@@ -173,6 +174,13 @@ public class Gui {
 		
 		JMenuItem greedy = new JMenuItem("Greedy");
 		greedy.setMnemonic(KeyEvent.VK_G);
+		greedy.addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						GreedyStrategy strategy = new GreedyStrategy();
+						Gui.this.theGame.getComputerPlayer().setStrategy(strategy);
+					}
+				});
 		computerPlayerItem.add(greedy);
 		
 		JMenuItem random = new JMenuItem("Random");
