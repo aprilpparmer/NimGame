@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.KeyStroke;
 
+import edu.westga.cs6910.nim.model.CautiousStrategy;
 import edu.westga.cs6910.nim.model.Game;
 import edu.westga.cs6910.nim.model.Player;
 
@@ -160,6 +161,13 @@ public class Gui {
 		
 		JMenuItem cautious = new JMenuItem("Cautious");
 		cautious.setMnemonic(KeyEvent.VK_C);
+		cautious.addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						CautiousStrategy strategy = new CautiousStrategy();
+						Gui.this.theGame.getComputerPlayer().setStrategy(strategy);
+					}
+				});
 		computerPlayerItem.add(cautious);
 		
 		JMenuItem greedy = new JMenuItem("Greedy");
