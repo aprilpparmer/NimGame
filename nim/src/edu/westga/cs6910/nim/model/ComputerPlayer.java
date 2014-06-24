@@ -62,6 +62,21 @@ public class ComputerPlayer extends AbstractPlayer {
 		super.setNumberSticksToTake(this.sticksToTake);
 	}
 	
+	/**
+	 * Sets the strategy to be used by the computer player.
+	 * 
+	 * 
+	 * Precondition: the parameter is not null.
+	 * Postcondition: the specified strategy will determine how many sticks to take.
+	 * @param numberOfSticksStrategy - the strategy to be used in the game
+	 */
+	public void setStrategy(NumberOfSticksStrategy numberOfSticksStrategy) {
+		if (numberOfSticksStrategy == null) {
+			throw new IllegalArgumentException("The strategy does not exist");
+		}
+		this.numberOfSticksStrategy = numberOfSticksStrategy;
+	}
+	
 	//*************************** accessor methods ****************************
 
 	/**
