@@ -29,7 +29,13 @@ public class GreedyStrategy implements NumberOfSticksStrategy {
 			throw new IllegalArgumentException("The pile size must be greater than 0");
 		}
 		
-		int numberOfSticks = Math.max(pileSize - 1, Game.MAX_STICKS_PER_TURN);
+		int numberOfSticks = 0;
+		
+		if (pileSize >= (Game.MAX_STICKS_PER_TURN + 1)) {
+			numberOfSticks = Game.MAX_STICKS_PER_TURN;
+		} else {
+			numberOfSticks = pileSize - 1;
+		}
 		return numberOfSticks;
 	}
 }
