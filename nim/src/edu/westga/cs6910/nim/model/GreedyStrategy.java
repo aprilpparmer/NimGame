@@ -10,7 +10,7 @@ package edu.westga.cs6910.nim.model;
  * @version Summer 2014
  *
  */
-public class GreedyStrategy {
+public class GreedyStrategy implements NumberOfSticksStrategy {
 
 	public GreedyStrategy() {
 	}
