@@ -2,9 +2,13 @@ package edu.westga.cs6910.nim.view;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -22,8 +26,11 @@ public class GameStatusPanel extends JPanel implements Observer {
 	private static final long serialVersionUID = 140604L;
 	
 	private JLabel lblStatusLabel;	
+	private JLabel playAgain;
 	private Game theGame;
 	
+	private JButton yes;
+	private JButton no;
 	
 	/**
 	 * Creates a new GameStatusPanel that observes the specified game. 
@@ -45,6 +52,8 @@ public class GameStatusPanel extends JPanel implements Observer {
 		
 		
 		this.add(this.lblStatusLabel);
+		this.playAgain = new JLabel("");
+		this.add(this.playAgain);
 	}
 		
 	@Override	
@@ -64,6 +73,33 @@ public class GameStatusPanel extends JPanel implements Observer {
 
 	public void update(Observable observableObject, Object arg) {
 		this.lblStatusLabel.setText(this.theGame.toString());
+		if (this.theGame.isGameOver()) {
+			this.playAgain.setText("Would you like to play again?");
+			this.yes = new JButton("Yes");
+			this.add(yes, BorderLayout.CENTER);
+			yes.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				
+					GameStatusPanel.this.theGame.startNewGame(GameStatusPanel.this.theGame.getOtherPlayer(),
+							GameStatusPanel.this.theGame.getCurrentPlayer());
+					GameStatusPanel.this.lblStatusLabel.setText(GameStatusPanel.this.theGame.toString());
+					GameStatusPanel.this.playAgain.setText("");
+					GameStatusPanel.this.theGame.play();
+					GameStatusPanel.this.remove(GameStatusPanel.this.yes);
+					GameStatusPanel.this.remove(GameStatusPanel.this.no);
+				}		
+			});	
+			
+			this.no = new JButton("No ");
+			no.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					System.exit(0);
+				}
+			});
+			
+			
+			this.add(no, BorderLayout.CENTER);
+		}
 	}
 
 }
