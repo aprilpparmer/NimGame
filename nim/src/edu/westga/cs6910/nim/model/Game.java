@@ -130,6 +130,15 @@ public class Game extends Observable {
 	}
 
 	/**
+	 * Returns the Player whose turn it is not.
+	 * 
+	 * @return the other Player
+	 */
+	public Player getOtherPlayer() {
+		return this.otherPlayer;
+	}
+	
+	/**
 	 * Returns the number of sticks remaining in the pile.
 	 * 
 	 * @return how many sticks are left in the pile
@@ -165,7 +174,8 @@ public class Game extends Observable {
 	 */
 	public String toString() {
 		if (this.isGameOver()) {
-			return "Game over! Winner: " + this.otherPlayer.getName();
+			String gameOver = "Game over! Winner: " + this.otherPlayer.getName();
+			return gameOver;
 		}
 
 		return " Pile size: " + this.thePile.getSticksLeft();
