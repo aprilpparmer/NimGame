@@ -138,6 +138,7 @@ public class HumanPlayerPanel extends JPanel implements Observer {
 				HumanPlayerPanel.this.theHuman.setNumberSticksToTake((int) HumanPlayerPanel.this.cmbNumberToTake
 						.getSelectedItem());
 				HumanPlayerPanel.this.theGame.play();
+				
 			}
 		}
 

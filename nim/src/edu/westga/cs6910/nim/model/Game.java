@@ -92,7 +92,6 @@ public class Game extends Observable {
 		//          See http://tinyurl.com/javaObserverPattern
 
 		this.getCurrentPlayer().takeTurn();
-		
 		this.swapWhoseTurn();
 		setChanged();
 		notifyObservers();
