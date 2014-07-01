@@ -9,17 +9,22 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 
 import edu.westga.cs6910.nim.model.CautiousStrategy;
 import edu.westga.cs6910.nim.model.Game;
 import edu.westga.cs6910.nim.model.GreedyStrategy;
+import edu.westga.cs6910.nim.model.Pile;
 import edu.westga.cs6910.nim.model.Player;
 import edu.westga.cs6910.nim.model.RandomStrategy;
 
@@ -209,10 +214,12 @@ public class Gui {
 		
 		private JRadioButton radHumanPlayer;
 		private JRadioButton radComputerPlayer;
+		private JComboBox<Integer> choosePileSize;
 		
 		private Game theGame;
 		private Player theHuman;
 		private Player theComputer;
+		private Pile pile;
 
 		private NewGamePanel(Game theGame) {
 			this.theGame = theGame;
@@ -246,8 +253,24 @@ public class Gui {
 			// TODO: Add the 2 radio buttons to this panel.
 			add(this.radHumanPlayer);
 			add(this.radComputerPlayer);
-			 		
+			
+			Integer[] numbers = new Integer[12];
+			for (int i = 0; i < numbers.length; i++) {
+				numbers[i] = 9 + i;
+			}
+			this.choosePileSize = new JComboBox<Integer>(numbers);
+			this.choosePileSize.setEditable(false);
+			
+			JLabel setPile = new JLabel("Select a pile size: ");
+			JButton set = new JButton("Set");
+			set.addActionListener(new SetPileSizeListener());
+			
+			add(setPile);
+			add(this.choosePileSize);
+			add(set);	 		
 		}
+		
+		
 		
 		/* 
 		 * Defines the listener for computerPlayerButton.
