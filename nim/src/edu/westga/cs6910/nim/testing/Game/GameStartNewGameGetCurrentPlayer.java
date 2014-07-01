@@ -29,7 +29,7 @@ public class GameStartNewGameGetCurrentPlayer {
 		ComputerPlayer comp = new ComputerPlayer();
 		Game game = new Game(john, comp);
 		
-		game.startNewGame(john, comp);
+		game.startNewGame(john, comp, 12);
 		assertEquals("John", game.getCurrentPlayer().getName());
 	}
 	
@@ -42,7 +42,7 @@ public class GameStartNewGameGetCurrentPlayer {
 		ComputerPlayer comp = new ComputerPlayer();
 		Game game = new Game(john, comp);
 		
-		game.startNewGame(comp, john);
+		game.startNewGame(comp, john, 20);
 		assertEquals("Simple computer", game.getCurrentPlayer().getName());
 	}
 	
@@ -55,7 +55,7 @@ public class GameStartNewGameGetCurrentPlayer {
 		ComputerPlayer comp = new ComputerPlayer();
 		Game game = new Game(april, comp);
 
-		game.startNewGame(april, comp);
+		game.startNewGame(april, comp, 14);
 		assertEquals("April", game.getCurrentPlayer().getName());
 	
 	}
