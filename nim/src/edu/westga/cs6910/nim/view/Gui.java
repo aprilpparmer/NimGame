@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -261,22 +262,48 @@ public class Gui {
 			this.choosePileSize.setEditable(false);
 			
 			JLabel setPile = new JLabel("Select a pile size: ");
-			JButton set = new JButton("Set");
-			set.addActionListener(new SetPileSizeListener());
 			
 			add(setPile);
-			add(this.choosePileSize);
-			add(set);	 		
+			add(this.choosePileSize);	
+			
+			JLabel randomPlayer = new JLabel("Randomly select first player?");
+			add(randomPlayer);
+			JButton randomFirstYes = new JButton("Yes");
+			randomFirstYes.addActionListener(new SelectRandomFirstPlayerListener());
+			add(randomFirstYes);
+			JButton randomFirstNo = new JButton("No");
+			randomFirstNo.addActionListener(new NoRandomFirstPlayerListener());
+			add(randomFirstNo);
 		}
+		/*
+		 * 
+		 */
+		private class SelectRandomFirstPlayerListener implements ActionListener {
+			/**
+			 * Enables the use of the random first player option.
+			 */
+			public void actionPerformed(ActionEvent eventObject) {
+				Random rand = new Random();
+				int randomNumber = rand.nextInt(2) +1;
+				
+				if (randomNumber == 1) {
+					NewGamePanel.this.radHumanPlayer.setEnabled(true);
+					NewGamePanel.this.radComputerPlayer.setEnabled(false);
+				} else {
+					NewGamePanel.this.radHumanPlayer.setEnabled(false);
+					NewGamePanel.this.radComputerPlayer.setEnabled(true);
+				}
+			}
+		}
+		
 		
 		/*
 		 * 
 		 */
-		private class SetPileSizeListener implements ActionListener {
+		private class NoRandomFirstPlayerListener implements ActionListener {
 			@Override
 			/**
-			 * Enables the use to select a pile size.
-			 * Event handler for a click on the "set" button.
+			 * Does not choose a random first player. Leaves the first player choice to the Human.
 			 */
 			public void actionPerformed(ActionEvent eventObject) {
 				NewGamePanel.this.radHumanPlayer.setEnabled(true);

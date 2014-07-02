@@ -1,13 +1,10 @@
 package edu.westga.cs6910.nim.view;
 
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -30,7 +27,6 @@ public class ComputerPlayerPanel extends JPanel implements Observer {
 	private static final long serialVersionUID = 140604L;
 	private JLabel lblNumberTaken;
 	private ComputerPlayer theComputer;
-	private JButton btnTakeSticks;
 
 	/**
 	 * Creates a new ComputerPlayerPanel that observes the specified game. 
@@ -106,9 +102,6 @@ public class ComputerPlayerPanel extends JPanel implements Observer {
 			JOptionPane.showMessageDialog(null, "The Computer Player took: " + 
 					this.theComputer.getSticksOnThisTurn() + " stick(s) from the pile.");
 		}
-		
-		
-
 	}
 	
 	
@@ -121,41 +114,6 @@ public class ComputerPlayerPanel extends JPanel implements Observer {
 		
 		this.lblNumberTaken = new JLabel("Number of sticks taken: " + this.theComputer.getSticksOnThisTurn());
 		this.add(this.lblNumberTaken);
-		
-		
-		this.btnTakeSticks = new JButton("Take turn");
-		this.btnTakeSticks.addActionListener(new TakeTurnListener());
-		this.add(this.btnTakeSticks);
-	}
-	
-	
-	
-	//************************ private inner class ***********************
-	
-	/* 
-	 * Defines the listener for takeTurnButton.
-	 */
-	private class TakeTurnListener implements ActionListener {
-
-		/* 
-		 * Tells the Game to have its current player (i.e., the computer Player)
-		 * take its turn.	
-		 * 
-		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-		 */
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			// TODO: if the game isn't finished: 
-			// 		 - Set theComputer's pile and number of sticks.
-			//		 - Tell theGame to play a move.
-
-			if (!ComputerPlayerPanel.this.theGame.isGameOver()) { 
-				ComputerPlayerPanel.this.theComputer.setPileForThisTurn(ComputerPlayerPanel.this.theGame.getPile());
-				ComputerPlayerPanel.this.theComputer.setNumberSticksToTake();
-				ComputerPlayerPanel.this.theGame.play();
-			}
-
-		}
 
 	}
 
