@@ -25,6 +25,8 @@ public class Game extends Observable {
 
 	private HumanPlayer theHuman;
 	private ComputerPlayer theComputer;
+	
+	private int startingPileSize;
 
 	private Pile thePile;
 
@@ -49,8 +51,8 @@ public class Game extends Observable {
 		
 		this.currentPlayer = null;
 		this.otherPlayer = null;
-		
 		this.thePile = new Pile(INITIAL_PILE_SIZE);
+		this.startingPileSize = INITIAL_PILE_SIZE;
 	}
 
 	
@@ -69,10 +71,13 @@ public class Game extends Observable {
 	 * @ensures whoseTurn().equals(firstPlayer) &&
 	 * 			sticksLeft() == INITIAL_PILE_SIZE
 	 */
-	public void startNewGame(Player firstPlayer, Player secondPlayer) {
+	public void startNewGame(Player firstPlayer, Player secondPlayer, int pileSize) {
 		this.currentPlayer = firstPlayer;
 		this.otherPlayer = secondPlayer;
-		this.thePile = new Pile(INITIAL_PILE_SIZE);
+		this.thePile.setSticks(pileSize);
+		this.startingPileSize = pileSize;
+		
+		
 	}
 
 	/**
@@ -99,8 +104,13 @@ public class Game extends Observable {
 		
 	}
 
+	
 	// *********************** accessor methods *************************
 
+	public int getStartingPileSize() {
+		return this.startingPileSize;
+	}
+	
 	/**
 	 * Returns the human Player object.
 	 * 

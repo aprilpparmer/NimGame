@@ -9,6 +9,7 @@ import java.util.Observer;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import edu.westga.cs6910.nim.model.ComputerPlayer;
@@ -96,11 +97,18 @@ public class ComputerPlayerPanel extends JPanel implements Observer {
 		String sticks = Integer.toString(this.theComputer.getSticksOnThisTurn());
 		this.lblNumberTaken.setText("Number of sticks taken: " + sticks);
 		
-		if (this.isEnabled()) {
-			this.setEnabled(false);
-		} else {
-			this.setEnabled(true);
+		
+		this.setEnabled(!this.isEnabled());
+		if (this.isEnabled() && !this.theGame.isGameOver()) {
+			this.theComputer.setPileForThisTurn(ComputerPlayerPanel.this.theGame.getPile());
+			this.theComputer.setNumberSticksToTake();
+			this.theGame.play();
+			JOptionPane.showMessageDialog(null, "The Computer Player took: " + 
+					this.theComputer.getSticksOnThisTurn() + " stick(s) from the pile.");
 		}
+		
+		
+
 	}
 	
 	

@@ -16,15 +16,14 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 
 import edu.westga.cs6910.nim.model.CautiousStrategy;
 import edu.westga.cs6910.nim.model.Game;
 import edu.westga.cs6910.nim.model.GreedyStrategy;
-import edu.westga.cs6910.nim.model.Pile;
 import edu.westga.cs6910.nim.model.Player;
 import edu.westga.cs6910.nim.model.RandomStrategy;
 
@@ -62,7 +61,6 @@ public class Gui {
 		this.createAndShowGUI();
 		this.buildMenuBar();
 	}
-	
 	
 	
 	//****************************** private helper methods *******************
@@ -219,7 +217,6 @@ public class Gui {
 		private Game theGame;
 		private Player theHuman;
 		private Player theComputer;
-		private Pile pile;
 
 		private NewGamePanel(Game theGame) {
 			this.theGame = theGame;
@@ -252,7 +249,9 @@ public class Gui {
 			
 			// TODO: Add the 2 radio buttons to this panel.
 			add(this.radHumanPlayer);
+			this.radHumanPlayer.setEnabled(false);
 			add(this.radComputerPlayer);
+			this.radComputerPlayer.setEnabled(false);
 			
 			Integer[] numbers = new Integer[12];
 			for (int i = 0; i < numbers.length; i++) {
@@ -270,7 +269,20 @@ public class Gui {
 			add(set);	 		
 		}
 		
-		
+		/*
+		 * 
+		 */
+		private class SetPileSizeListener implements ActionListener {
+			@Override
+			/**
+			 * Enables the use to select a pile size.
+			 * Event handler for a click on the "set" button.
+			 */
+			public void actionPerformed(ActionEvent eventObject) {
+				NewGamePanel.this.radHumanPlayer.setEnabled(true);
+				NewGamePanel.this.radComputerPlayer.setEnabled(true);
+			}
+		}
 		
 		/* 
 		 * Defines the listener for computerPlayerButton.
@@ -284,9 +296,16 @@ public class Gui {
 			 */
 			
 			public void actionPerformed(ActionEvent eventObject) {
-					
+				
+				Gui.this.theGame.startNewGame(NewGamePanel.this.theComputer, 
+						NewGamePanel.this.theHuman, (int) NewGamePanel.this.choosePileSize.getSelectedItem());
 				Gui.this.pnlComputerPlayer.setEnabled(true);
-				Gui.this.theGame.startNewGame(NewGamePanel.this.theComputer, NewGamePanel.this.theHuman);
+				Gui.this.theGame.getComputerPlayer().setPileForThisTurn(Gui.this.theGame.getPile());
+				Gui.this.theGame.getComputerPlayer().setNumberSticksToTake();
+				Gui.this.theGame.play();
+				JOptionPane.showMessageDialog(null, "The Computer Player took: " +
+						Gui.this.theGame.getComputerPlayer().getSticksOnThisTurn() + " stick(s) from the pile.");
+
 			}
 		}
 
@@ -304,9 +323,11 @@ public class Gui {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO: Enable pnlHumanPlayer and start a game
 				//		 with theHuman playing first.
-				Gui.this.pnlHumanPlayer.setEnabled(true);
-				Gui.this.theGame.startNewGame(NewGamePanel.this.theHuman, NewGamePanel.this.theComputer);
 				
+				Gui.this.theGame.startNewGame(NewGamePanel.this.theHuman, 
+						NewGamePanel.this.theComputer, (int) NewGamePanel.this.choosePileSize.getSelectedItem());	
+				Gui.this.pnlHumanPlayer.setEnabled(true);
+			
 			}
 		}
 		

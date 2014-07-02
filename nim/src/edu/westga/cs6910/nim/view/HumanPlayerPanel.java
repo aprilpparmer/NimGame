@@ -139,6 +139,7 @@ public class HumanPlayerPanel extends JPanel implements Observer {
 						.getSelectedItem());
 				HumanPlayerPanel.this.theGame.play();
 				
+				
 			}
 		}
 

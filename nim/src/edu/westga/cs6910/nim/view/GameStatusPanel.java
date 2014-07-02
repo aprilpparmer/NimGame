@@ -78,13 +78,9 @@ public class GameStatusPanel extends JPanel implements Observer {
 			this.yes = new JButton("Yes");
 			this.add(yes, BorderLayout.CENTER);
 			yes.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-				
-					GameStatusPanel.this.theGame.startNewGame(GameStatusPanel.this.theGame.getOtherPlayer(),
-							GameStatusPanel.this.theGame.getCurrentPlayer());
-					GameStatusPanel.this.lblStatusLabel.setText(GameStatusPanel.this.theGame.toString());
-					GameStatusPanel.this.playAgain.setText("");
-					GameStatusPanel.this.theGame.play();
+				public void actionPerformed(ActionEvent e) {		
+					Gui newGui = new Gui(GameStatusPanel.this.theGame);
+					newGui.getClass();
 					GameStatusPanel.this.remove(GameStatusPanel.this.yes);
 					GameStatusPanel.this.remove(GameStatusPanel.this.no);
 				}		

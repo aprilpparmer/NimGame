@@ -33,6 +33,10 @@ public class Pile {
 		this.sticks -= number;
 	}
 	
+	public void setSticks(int pileSize) {
+		this.sticks = pileSize;
+	}
+	
 	
 
 	//************************** accessor methods ****************************
