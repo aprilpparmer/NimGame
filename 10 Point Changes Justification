@@ -1,0 +1,36 @@
+1) A brief description of the change made  
+2) A description of what was done to which pieces of code to implement each  change  
+3) The rationale for the implementation.  In other words, why did you do it the way you did instead  of some other way? 
+
+
+#1 - Let the user start a new game:
+		For this change, I made it so that the user could start a new game. I decided not to keep the same first player from 
+	the previous game because a user may want to change that the next time, possibly to try to figure out patterns or strategies.
+	To implement this change, I first added a JLabel and two JButtons ("yes" and "no") to the GameStatusPanel. Here, in
+	addition to being able to view the winner of the current game, the user may select "yes" or "no" to give his/her choice
+	of playing the game again. By selecting "yes", I chose for the application start a new window entirely, so that the player 
+	may select the number of sticks (another change), and the first player for the new game. The user is, however, still able 
+	to see who won the previous game. After the new window opens, the buttons are removed from the GameStatusPanel. 
+	By selecting "no", the window simply closes. For these actions to take place, I added ActionListeners to both buttons, 
+	which define the actions to take place when "yes" or "no" is clicked. 
+
+#2 - Have the computer automatically take its turn so that the user does not have to click "Take Turn" on the ComputerPlayerPanel:
+		To implement this change, I first got rid of the "Take Turn" button. I then added code to the ComputerPlayerPanel's 
+	update method and the Gui's ComputerFirstListener ActionListener, to complete the action that the TakeTurnListener was
+	previously completing. To make it so that the Human Player is well aware that the Computer has made a move, I added
+	a JOptionPane Dialog Box to give a message to the user of how many sticks the Computer Player took on that turn.	
+		
+#3 - Give the user the option for the application to randomly choose which player goes first:
+		For this change, I first added code to the Gui's buildPanel method, creating a JLabel (asking "Randomly Select First Player?),
+		and two JButtons ("yes" and "no"). When the "yes" button is pressed, the ActionListener randomly selects a number, either
+		1 or 2. If the random number is 1, the Human Player goes first. If it is 2, the Computer Player goes first. If the user chooses
+		"no", the application goes on as normal, giving the user the option to choose either Player to go first. I decided to give the 
+		user the option of randomly selecting the first player, because some time s/he may want to choose the first player.
+		
+#4 - Allow the user to set the number of sticks for the pile:
+		For my final change, I added a JComboBox to set the number of sticks in the pile. This allows the user to customize the 
+	game-play a bit, which is less boring than using a final/set pile size. I decided to use a JComboBox with numbers 9-20 instead of
+	a textbox so that the pile size did not become excessive. A game with a pile size of 100 with 1-3 maximum sticks to take 
+	each turn could last for longer than desired. The pile size is set by starting a new game when the radio button for
+	the first player is clicked. I decided to add the pile size are part of the parameters for the startNewGame method of the Game 
+	class. 					
